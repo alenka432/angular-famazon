@@ -1,0 +1,27 @@
+<div class="container">
+    @if (product) {
+    <div class="row my-5">
+        <div class="col">
+            <div class="thumbnail d-inline-block relative mx-6">
+                <img [src]="`/img/` + product.imageUrl" class="image-fluid w-100" alt="{{product.name}}">
+                @if (!product.availability) {
+                <div id="text-over" class="thumbnail-text"><b>NOT AVAILABLE</b></div>
+                }
+            </div>
+        </div>
+        <div class="col">
+            <h2 class="text-secondary">{{product.name}}</h2>  
+            <p>Brand: {{product.brand}} <br>Category: {{product.category}}</p>
+            <p>{{product.description}}</p>
+            <p class="fs-5 text-success">Price: ${{product.price.toFixed(2)}}</p>
+            @if (product.availability) {
+            <div class="btn btn-warning" (click)="addToCart(product)">Add To Cart</div>
+            }@else {
+            <div class="btn btn-secondary" disabled>Add To Cart</div>
+            }
+        </div>
+    </div>
+    }@else{
+    <h2>Product not found</h2>
+    }
+</div>

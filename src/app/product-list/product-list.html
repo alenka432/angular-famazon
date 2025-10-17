@@ -1,0 +1,44 @@
+<!--Navigation second line start-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link text-warning">Pets</a>
+        <a class="nav-link disabled" aria-disabled="true">Helloween</a>
+        <a class="nav-link disabled" aria-disabled="true">Christmas</a>
+        <a class="nav-link disabled" aria-disabled="true">Furniture</a>
+        <a class="nav-link disabled" aria-disabled="true">Smartphone</a>
+        <a class="nav-link disabled" aria-disabled="true">Food</a>
+        <a class="nav-link disabled" aria-disabled="true">Flowers</a>
+        <a class="nav-link disabled" aria-disabled="true">Home</a>
+        <a class="nav-link disabled" aria-disabled="true">Garden</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<!--Navigation second line end-->
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+        @for(product of productsArray; track $index){
+            <div class="col">
+                <div class="card my-3 shadow-sm">
+                    <img [src]="`/img/` + product.imageUrl" class="card-img-top" alt={{product.name}}>
+                      @if (!product.availability) {
+                      <div id="text-over" class="thumbnail-text"><b>NOT AVAILABLE</b></div>
+                      }
+                    <div class="card-body">
+                        <h5 class="card-title text-secondary">{{product.name}}</h5>
+                        <p class="card-text fs-5 text-success">Price: ${{product.price.toFixed(2)}}</p>
+                        <a [routerLink]="[`/details`, product.id]" class="btn btn-success">Details</a>
+                        @if (product.availability) {
+                        <div class="btn btn-warning mx-3" (click)="addToCart(product)">Add To Cart</div>
+                         }@else {
+                        <div class="btn btn-secondary mx-3" disabled>Add To Cart</div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }        
+    </div>
+</div>

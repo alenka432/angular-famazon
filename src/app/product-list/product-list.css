@@ -1,0 +1,19 @@
+/*Image section start*/
+.relative{
+  position: relative;
+}
+.d-inline-block{
+  display: inline-block;
+}
+.thumbnail-text{
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}
+#text-over{
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1rem 1rem;
+  color: whitesmoke;  
+}
+/*Image section finisch*/
